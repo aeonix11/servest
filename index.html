@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servest Secure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white; 
+        }
+        .main-section, .blue-banner {
+            padding: 2rem;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .text-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        .logo {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            color: #003399;
+            margin: 0;
+        }
+        h2 {
+            color: #666;
+            font-weight: normal;
+            margin: 0.5rem 0 1rem;
+        }
+        .tagline {
+            color: #003399;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .description {
+            color: #333;
+        }
+        .image-container {
+            position: relative;
+            flex: 1;
+        }
+        .main-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        }
+        .blue-square {
+            position: absolute;
+            width: 100%;
+            height: 80%;
+            bottom: -20px;
+            right: -20px;
+            background-color: #003399;
+            z-index: 1;
+        }
+        .blue-banner {
+            background-color: #003399;
+            color: white;
+            padding: 2rem;
+        }
+        .banner-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            position: relative;
+            color: white;
+        }
+        .banner-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background-color: #cccccc;
+        }
+        .image-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .image-item {
+            width: 22%;
+            text-align: center;
+        }
+        .image-item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 0.5rem;
+        }
+        .image-title {
+            background-color: white;
+            color: #003399;
+            padding: 0.5rem;
+            font-weight: bold;
+        }
+        .grey-banner {
+            background-color: #808080;
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .grey-banner-content {
+            max-width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        .services-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .services-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .grey-info-banner {
+            background-color: #808080;
+            color: white;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .info-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .info-item {
+            flex: 1;
+            padding: 0 1rem;
+        }
+        .info-item p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        .app-usage-section, .about-us-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .app-usage-title, .about-us-title {
+            color: #003399;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .app-usage-separator, .about-us-separator {
+            height: 6px;
+            background-color: #cccccc;
+            border: none;
+            margin: 0;
+        }
+        .app-usage-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 2rem;
+        }
+        .phone-container {
+            flex: 2;
+            margin-right: 2rem;
+        }
+        .phone-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .content-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        .content-title {
+            color: #003399;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .content-text {
+            margin-bottom: 1rem;
+        }
+        .content-logo {
+            max-width: 200px;
+            margin-top: 2rem;
+        }
+        .content-tagline {
+            color: #003399;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .app-usage-content {
+                flex-direction: column;
+            }
+            .phone-container {
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+            .phone-container, .content-container {
+                width: 100%;
+            }
+        }
+
+        .about-us-image {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .servest-image {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .specialised-services-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #003399; /* Dark blue background */
+            color: white;
+        }
+
+        .specialised-services-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .specialised-services-separator {
+            height: 6px;
+            background-color: #cccccc;
+            border: none;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .specialised-services-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .specialised-services-content li {
+            position: relative;
+            padding-left: 1.5em;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .specialised-services-content li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: white;
+        }
+
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .full-width {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .blue-banner, .grey-banner, .grey-info-banner, .specialised-services-section {
+            width: 100%;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .centered-content {
+            width: 100%;
+            max-width: 1200px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="centered-content">
+            <section class="main-section">
+                <div class="content-wrapper">
+                    <div class="main-content">
+                        <div class="text-content">
+                            <img src="images/first logo.png" alt="Servest Secure Logo" class="logo">
+                            <p class="description">A high availability emergency response service that delivers protection to you and your family while your crisis is resolved.</p>
+                        </div>
+                        <div class="image-container">
+                            <img src="images/phone logo.png" alt="Smartphone with map" class="main-image">
+                            <div class="blue-square"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="blue-banner full-width">
+            <div class="content-wrapper">
+                <h2 class="banner-title">PERSONAL EMERGENCY RESPONSE</h2>
+                <div class="image-grid">
+                    <div class="image-item">
+                        <img src="images/national footprint.png" alt="National Footprint">
+                        <div class="image-title">NATIONAL FOOTPRINT</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/national control centers.png" alt="National Control & Command Centres">
+                        <div class="image-title">NATIONAL CONTROL & COMMAND CENTRES</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/armed response.png" alt="24/7 Armed Response">
+                        <div class="image-title">24/7 ARMED RESPONSE</div>
+                    </div>
+                    <div class="image-item">
+                        <img src="images/aerial emergency.png" alt="Aerial Emergency Services">
+                        <div class="image-title">AERIAL EMERGENCY SERVICES</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="centered-content">
+            <section class="services-section">
+                <div class="content-wrapper">
+                    <img src="images/services.png" alt="Servest Secure Services" class="services-image">
+                </div>
+            </section>
+        </div>
+
+        <section class="grey-banner full-width">
+            <div class="content-wrapper">
+                <div class="grey-banner-content">
+                    As a Servest Secure Subscriber, you and up to five of your loved ones enjoy the protection of professional personal security when you find yourself vulnerable or feel threatened under any of the following conditions:
+                </div>
+            </div>
+        </section>
+
+        <div class="centered-content">
+            <section class="app-usage-section">
+                <div class="content-wrapper">
+                    <h2 class="app-usage-title">HOW TO USE YOUR SERVEST SECURE APP</h2>
+                    <hr class="app-usage-separator">
+                    <div class="app-usage-content">
+                        <div class="phone-container">
+                            <img src="images/phone.png" alt="Servest Secure App Usage" class="phone-image">
+                        </div>
+                        <div class="content-container">
+                            <h3 class="content-title">WHY SERVEST SECURE?</h3>
+                            <p class="content-text">You have a network of crisis management teams working to resolve and ensure your safety in a crisis.</p>
+                            <p class="content-text">Trouble comes when you least expect it.</p>
+                            <p class="content-text">Making the right people aware of your situation significantly minimises immediate and consequential risk that leaves you vulnerable and powerless.</p>
+                            <p class="content-text">The location technology on the Servest Secure app provides us with your battery life and updated locations until we close the service call, meaning that if your situation deteriorates and you are unable to make further calls we will still be able to keep track of your location.</p>
+                            <img src="images/servest secure phone logo.png" alt="Servest Secure Logo" class="content-logo">
+                            <p class="content-tagline">PROTECT YOUR PEACE OF MIND</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="grey-info-banner full-width">
+            <div class="content-wrapper">
+                <div class="info-container">
+                    <div class="info-item">
+                        <p>By pressing the Servest Secure button on your phone, you are activating a team of security professionals with one thing in mind...to keep you safe and protected! We are instantly aware of your situation and location which are key to solving your crisis effectively and quickly.</p>
+                    </div>
+                    <div class="info-item">
+                        <p>At Servest Secure, our sole purpose is to minimize the risk of injury or loss to our members. We do this by providing immediate management of any situation while dispatch of security, mechanical or medical teams are underway.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="centered-content">
+            <section class="about-us-section">
+                <div class="content-wrapper">
+                    <h2 class="about-us-title">ABOUT US</h2>
+                    <hr class="about-us-separator">
+                    <div class="about-us-content">
+                        <p>Servest Secure was established to answer the growing need for professional protection services where clients are at risk of personal injury in the case of a vehicle breakdown on South African roads and/or where a client requires support in case of arrest.</p>
+                        
+                        <p>We have the resources to offer our clients a unique and experienced mix of skills focused on their safety in times of crisis. We are proud to have at our disposal, the largest vehicle recovery and hijack management team in South Africa which includes cross-border capability. The combination of these resources offers our clients a unique and experienced mix of skills focused on their safety in times of crisis. We are proud to have at our disposal, the largest vehicle recovery and hijack management team in South Africa which includes cross-border capability.</p>
+                        
+                        <p>Our ground and aerial-based reaction services are able to monitor, track, escort and recover a broad variety of vehicles, ranging from light motor vehicles to 18-ton trucks, and from single cars to entire fleets. We also specialise with providing personal close protection services and goods in transit surveillance.</p>
+                        
+                        <p>National call centers co-ordinate support calls which provide crisis management and security management respectively.</p>
+                    </div>
+                    <div class="about-us-image">
+                        <img src="images/aboutus logo.png" alt="Servest Secure App User" class="servest-image">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="specialised-services-section full-width">
+            <div class="content-wrapper">
+                <h2 class="specialised-services-title">SPECIALISED INTERVENTION SERVICES</h2>
+                <hr class="specialised-services-separator">
+                <div class="specialised-services-content">
+                    <ul>
+                        <li>Should the Subscribing Member require a close personal protection team to escort him/her from one destination to another destination.</li>
+                        <li>This must be arranged 24 - 48 hours before the trip is to commence.</li>
+                        <li>This service is an additional service charged separately.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // We'll add JavaScript here if needed
+    </script>
+</body>
+</html>
